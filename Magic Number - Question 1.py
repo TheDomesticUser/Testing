@@ -14,6 +14,8 @@ Win(s)
 Quit (or give up)
 
 '''
+
+# THIS CODE IS TRASH
    
 import random
 
