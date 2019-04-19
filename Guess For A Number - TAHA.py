@@ -1,0 +1,72 @@
+"""
+Ali, Taha
+Mr Le
+ICS3UR
+Thursday, Dec 07
+
+Magic Number: Write a program that requires the user to guess a generated number between 1 and 10.
+You will display the appropriate messages prompting the user.
+You will also need to keep track of and display the following information (ideally after the guess or during quit):
+
+Total Guesses
+The magic number
+Win(s)
+Quit (or give up)
+
+"""
+
+print("Welcome to the number guessing game.")                                                               
+print("The computer will randomply pick a number between 1 and 10. Your job is to guess the number.")       #printing instructions of the game to the user
+
+import random
+number1 = [1,2,3,4,5,6,7,8,9,10]                                                                    #list of numbers from 1-10
+
+print("_________________________________________________")
+print("Remember you can always quit by inputting 0 when the game starts")
+start = input("Press space and then enter to start the game!")                                      #user input stored as variable start
+
+
+wins = []                                                                                           #list to account for wins
+guessL = []                                                                                         #list to account for all guesses throughout all games
+while True:
+    if start == " ":                                                                                #if variable input is " " then game runs
+        print("___________________________________________")
+        print("Generating a random number. 3, 2, 1:")
+        answer = random.choice(number1)                                                             #creates variable answer that stores a number randomly generated number between 1-10
+        print("Number has been generated")
+        print("Input 0 to quit")
+        print("___________________________________________")
+        guesses = []                                                                                #list to account for guesses for the following attempt
+        while True:
+            guess = int(input("Your guess:"))                                               #variable guess to check if user input is equivalent to the randomly generated number
+            if guess == 0:                                                                  #if guess is equivalent to 0 the loop is stopped
+                break
+            if guess >= 1 and  guess <= 10:
+                if guess == answer:                                                         #if guess is equivalent to answer
+                    print("Congrats")
+                    guesses.append(1)                                                       #adds 1 value to guesses
+                    guessL.append(1)                                                        #adds 1 value to guessL
+                    wins.append(1)                                                          #adds 1 value to wins
+                    break                                                                   #loop restarts after correct answer
+                if guess > answer:
+                    print("Try a little lower")                                             #If guess is higher than random number prints lower
+                    guesses.append(1)                                                       #adds 1 value to guesses
+                    guessL.append(1)                                                        #adds 1 value to guessL
+                if guess < answer:
+                    print("Try a little higher")                                            #if guess is lower than random number prints higher
+                    guessL.append(1)                                                        #adds 1 value to guessL
+                    guesses.append(1)                                                       #adds 1 value to guesses
+            else:
+                print("Sorry only numbers between 1 and 10")                                #if number is greater than 10 or less than 0, indicates to the user to guess numbers between range 1-10
+    guesses1 = sum(guesses)                                                                 #calculates sum of guesses in variable guesses1
+    wins1 = sum(wins)                                                                       #calculates sum of wins in variable wins1
+    guess1 = sum(guessL)                                                                    #calculates sum of guessL in variable guess1
+    print("Total Guesses for following attempt = " + str(guesses1))
+    print("Total Guesses for all attempts = " + str(guess1))
+    print("Wins = " + str(wins1))
+                                                                                            #prints guesses for following attempt, total guesses of all attempts, amount of wins, and instructions on how to quit
+    if guess == 0:                                                                      
+        print("Thank You for playing!")                                                     #if guess is equivalent to 0 both loops are stopped and a farewell is printed to the user
+        break
+        
+    
